@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcos’ LGU Pork | Rep. Antonio Tinio</title>
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@700&f[]=satoshi@400,500,700&display=swap">
+    <style>
+        :root {
+            /* Theme Colors */
+            --bg: #0a0a0a;
+            --surface: #141414;
+            --accent: #ff3e3e;
+            --text-main: #ffffff;
+            --text-muted: #a1a1a1;
+            
+            /* Typography */
+            --font-display: 'Clash Display', sans-serif;
+            --font-body: 'Satoshi', sans-serif;
+            
+            /* Spacing */
+            --padding: clamp(1.5rem, 5vw, 4rem);
+            --gap: clamp(1rem, 3vh, 2.5rem);
+            
+            /* Animation */
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --duration: 0.8s;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+            height: 100%;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            height: 100%;
+            line-height: 1.5;
+        }
+
+        /* Slide Architecture */
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            padding: var(--padding);
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Decorative Background */
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 20%, rgba(255, 62, 62, 0.05) 0%, transparent 40%);
+            z-index: 1;
+        }
+
+        /* Typography Styles */
+        h1, h2 {
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: var(--gap);
+        }
+
+        h1 { font-size: clamp(2.5rem, 10vw, 6rem); letter-spacing: -2px; }
+        h2 { font-size: clamp(2rem, 6vw, 4rem); color: var(--accent); }
+
+        p { font-size: clamp(1rem, 2vw, 1.5rem); color: var(--text-muted); max-width: 800px; }
+
+        .highlight { color: var(--accent); font-weight: 700; }
+
+        /* Content Elements */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: var(--gap);
+        }
+
+        .stat-card {
+            background: var(--surface);
+            padding: 2rem;
+            border-left: 4px solid var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover { transform: translateY(-5px); }
+
+        .stat-value { font-family: var(--font-display); font-size: 3rem; color: var(--accent); display: block; }
+        .stat-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+
+        ul { list-style: none; margin-top: 1.5rem; }
+        li { 
+            font-size: clamp(1.1rem, 1.8vw, 1.8rem); 
+            margin-bottom: 1rem; 
+            padding-left: 2rem; 
+            position: relative; 
+        }
+        li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        blockquote {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-family: var(--font-display);
+            border-left: 10px solid var(--accent);
+            padding-left: 2.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+        }
+
+        /* Progress Indicators */
+        .nav-dots {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--accent);
+            transform: scale(1.5);
+            box-shadow: 0 0 15px var(--accent);
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity var(--duration) var(--ease), transform var(--duration) var(--ease);
+        }
+
+        .slide.active .reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal:nth-child(1) { transition-delay: 0.1s; }
+        .reveal:nth-child(2) { transition-delay: 0.2s; }
+        .reveal:nth-child(3) { transition-delay: 0.3s; }
+        .reveal:nth-child(4) { transition-delay: 0.4s; }
+
+        /* Responsive Fixes */
+        @media (max-width: 768px) {
+            .nav-dots { display: none; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-dots" id="navDots"></div>
+
+    <!-- SLIDE 1: TITLE -->
+    <section class="slide">
+        <div class="slide-content">
+            <p class="reveal highlight" style="letter-spacing: 4px; text-transform: uppercase;">Press Release | Feb 2026</p>
+            <h1 class="reveal">Marcos’<br><span style="color: var(--accent)">“LGU Pork”</span></h1>
+            <p class="reveal">A massive patronage scheme designed to buy loyalty and secure impunity.</p>
+            <div class="reveal" style="margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                <p style="font-size: 1rem; font-weight: 700;">REP. ANTONIO TINIO</p>
+                <p style="font-size: 0.9rem;">Deputy Minority Leader | ACT Teachers Partylist</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 2: THE CORE CHARGE -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2 class="reveal">A Political Fortress</h2>
+            <ul class="reveal">
+                <li>Consolidating machinery ahead of <span class="highlight">2028 Elections</span>.</li>
+                <li>Buying loyalty of local chief executives.</li>
+                <li>Distracting from the <span class="highlight">Flood Control Scandal</span>.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 3: THE HEIST -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2 class="reveal">The ₱48.8 Billion Slush Fund</h2>
+            <div class="grid reveal">
+                <div class="stat-card">
+                    <span class="stat-value">₱17.9B</span>
+                    <span class="stat-label">Diverted from Teacher/Health Worker Benefits</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">₱37.5B</span>
+                    <span class="stat-label">Financial Assistance to LGUs</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">₱11.3B</span>
+                    <span class="stat-label">Growth Equity Fund</span>
+                </div>
+            </div>
+            <p class="reveal" style="margin-top: 2rem;">"Robbing frontliners of the bureaucracy to fund political alliances."</p>
+        </div>
+    </section>
+
+    <!-- SLIDE 4: THE MECHANISM -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2 class="reveal">Discretionary Control</h2>
+            <p class="reveal">Unlike the mandated National Tax Allotment, the <span class="highlight">LGSF</span> is entirely controlled by the President through the DBM.</p>
+            <blockquote class="reveal">
+                "Huwag tayong palilinlang... Ang programang ito ay hindi para sa serbisyo, kundi para sa panunuhol."
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- SLIDE 5: THE SCORECARD -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2 class="reveal">DBM Circulars 167 & 169</h2>
+            <ul class="reveal">
+                <li>Mandatory application via the <span class="highlight">"Ugnayang Bayan Portal."</span></li>
+                <li>A <span class="highlight">"Scorecard"</span> system for funding decisions.</li>
+                <li>Rewarding political allies; punishing critics.</li>
+            </ul>
+            <p class="reveal" style="margin-top: 2rem;">Pure pork barrel disguised as LGU support.</p>
+        </div>
+    </section>
+
+    <!-- SLIDE 6: ORGANIZED PLUNDER -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2 class="reveal">Bureaucrat Capitalism</h2>
+            <ul class="reveal">
+                <li>Infrastructure projects prone to <span class="highlight">kickbacks</span>.</li>
+                <li>Roads, bridges, and hospitals as "pork" opportunities.</li>
+                <li>Using the people’s money to build a political fortress.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 7: CALCULATED MANEUVERS -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2 class="reveal">The Shell Game</h2>
+            <ul class="reveal">
+                <li>Wooing "Pink" supporters to isolate the Duterte faction.</li>
+                <li>Fake reform agenda (Anti-Dynasty & FOI) as a shield.</li>
+                <li>Marcos Jr. as the <span class="highlight">"biggest fish"</span> in the flood control scam.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 8: CONCLUSION -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2 class="reveal">Two Sides. One Coin.</h2>
+            <blockquote class="reveal">
+                "Marcos and Duterte are two sides of the same rotten coin."
+            </blockquote>
+            <p class="reveal" style="font-size: 2rem; color: #fff;">Reject Organized Plunder.</p>
+            <p class="reveal">Demand that billions be returned for higher wages and social services.</p>
+        </div>
+    </section>
+
+    <script>
+        // SLIDE CONTROLLER
+        const slides = document.querySelectorAll('.slide');
+        const dotsContainer = document.getElementById('navDots');
+        
+        // Generate Dots
+        slides.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            dot.addEventListener('click', () => {
+                slides[i].scrollIntoView({ behavior: 'smooth' });
+            });
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        // Intersection Observer for active states
+        const observerOptions = {
+            threshold: 0.6
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Activate slide
+                    slides.forEach(s => s.classList.remove('active'));
+                    entry.target.classList.add('active');
+
+                    // Activate dot
+                    const index = Array.from(slides).indexOf(entry.target);
+                    dots.forEach(d => d.classList.remove('active'));
+                    dots[index].classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        slides.forEach(slide => observer.observe(slide));
+
+        // Keyboard Navigation
+        window.addEventListener('keydown', (e) => {
+            const currentSlide = document.querySelector('.slide.active');
+            const index = Array.from(slides).indexOf(currentSlide);
+
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+                if (index < slides.length - 1) slides[index + 1].scrollIntoView({ behavior: 'smooth' });
+                e.preventDefault();
+            }
+            if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                if (index > 0) slides[index - 1].scrollIntoView({ behavior: 'smooth' });
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
