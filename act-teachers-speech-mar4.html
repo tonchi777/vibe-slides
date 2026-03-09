@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tumitindig Laban sa Giyera ng US - Rep. Antonio Tinio</title>
+    
+    <!-- Fonts for Bold Signal -->
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=dm-sans@400,500,700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===========================================
+           VIEWPORT FITTING: MANDATORY BASE STYLES
+           =========================================== */
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            /* Bold Signal Theme Colors */
+            --bg-primary: #0a0a0a; 
+            --bg-secondary: #171717;
+            --accent: #ff3366; /* Vibrant Pink/Red */
+            --accent-secondary: #33ccff; /* Electric Blue */
+            --card-bg: #141414;
+            --text-primary: #ffffff;
+            --text-secondary: #a3a3a3;
+            
+            /* Typography */
+            --font-display: 'Clash Display', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            
+            --title-size: clamp(3rem, 7vw, 6rem);
+            --h2-size: clamp(2rem, 5vw, 4rem);
+            --body-size: clamp(1rem, 2vw, 1.5rem);
+            --small-size: clamp(0.875rem, 1.5vw, 1.125rem);
+            
+            /* Spacing */
+            --slide-padding: clamp(2rem, 5vw, 5rem);
+            --content-gap: clamp(1.5rem, 3vw, 2.5rem);
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: var(--slide-padding);
+        }
+
+        /* Abstract Background Glows */
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(255,51,102,0.1) 0%, rgba(10,10,10,0) 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .slide::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            right: -10%;
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, rgba(51,204,255,0.08) 0%, rgba(10,10,10,0) 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-height: 100%;
+            overflow: hidden;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            z-index: 1;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: var(--content-gap);
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            color: var(--text-primary);
+            font-size: var(--title-size);
+            text-transform: uppercase;
+        }
+        
+        h1 .highlight {
+            color: transparent;
+            -webkit-text-stroke: 2px var(--accent);
+            text-stroke: 2px var(--accent);
+        }
+        
+        h1 .highlight-solid {
+            color: var(--accent);
+        }
+
+        h2 {
+            font-size: var(--h2-size);
+            color: var(--text-primary);
+        }
+        
+        h2 .accent {
+            color: var(--accent);
+        }
+
+        p, li {
+            font-size: var(--body-size);
+            line-height: 1.5;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 2.5rem;
+            background: var(--card-bg);
+            padding: 1.5rem 1.5rem 1.5rem 3rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .bullet-list li:hover {
+            transform: translateX(10px);
+            border-color: rgba(255,51,102,0.3);
+        }
+
+        .bullet-list li::before {
+            content: '→';
+            color: var(--accent);
+            position: absolute;
+            left: 1.25rem;
+            top: 1.5rem;
+            font-family: var(--font-display);
+            font-weight: bold;
+        }
+
+        .calls-to-action {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .cta-card {
+            background: linear-gradient(145deg, var(--card-bg) 0%, rgba(20,20,20,0.4) 100%);
+            border-top: 3px solid var(--accent);
+            padding: 2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            color: white;
+            font-size: var(--small-size);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .cta-card:nth-child(even) {
+            border-top-color: var(--accent-secondary);
+        }
+
+        .quote-box {
+            border-left: 4px solid var(--accent);
+            padding-left: 2rem;
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .quote-box::before {
+            content: '"';
+            position: absolute;
+            top: -2rem;
+            left: 1rem;
+            font-size: 6rem;
+            color: rgba(255,51,102,0.2);
+            font-family: var(--font-display);
+            pointer-events: none;
+        }
+        
+        .quote-box p {
+            font-size: clamp(1.25rem, 2.5vw, 2rem);
+            color: white;
+            font-style: italic;
+            line-height: 1.3;
+        }
+
+        /* Tags/Pills */
+        .tag-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-primary);
+            padding: 0.5rem 1.25rem;
+            border-radius: 100px;
+            font-size: 0.9em;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        .tag.accent {
+            background: rgba(255,51,102,0.1);
+            border-color: rgba(255,51,102,0.3);
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-height: 700px) {
+            :root {
+                --slide-padding: clamp(1.5rem, 3vw, 2rem);
+            }
+            .bullet-list li {
+                padding: 1rem 1rem 1rem 2.5rem;
+            }
+            .bullet-list li::before {
+                top: 1rem;
+                left: 1rem;
+            }
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .slide.visible .reveal, .slide.visible .reveal-scale {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .reveal:nth-child(1), .reveal-scale:nth-child(1) { transition-delay: 0.1s; }
+        .reveal:nth-child(2), .reveal-scale:nth-child(2) { transition-delay: 0.2s; }
+        .reveal:nth-child(3), .reveal-scale:nth-child(3) { transition-delay: 0.3s; }
+        .reveal:nth-child(4), .reveal-scale:nth-child(4) { transition-delay: 0.4s; }
+        .reveal:nth-child(5), .reveal-scale:nth-child(5) { transition-delay: 0.5s; }
+
+        .nav-dots {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+            transform: scale(1.5);
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: var(--slide-padding);
+            left: var(--slide-padding);
+            font-family: var(--font-display);
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.15);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-dots" id="navDots"></nav>
+
+    <!-- Slide 1: Title -->
+    <section class="slide title-slide">
+        <div class="slide-content">
+            <h1 class="reveal">Tumitindig<br>Laban sa<br><span class="highlight">Giyera ng US</span></h1>
+            <p class="reveal" style="color: var(--accent-secondary); font-size: 1.25em; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-top: 1rem;">Kondemnasyon sa Agresyon sa Iran</p>
+            
+            <div class="tag-container reveal">
+                <span class="tag accent">Rep. Antonio Tinio</span>
+                <span class="tag">Deputy Minority Leader</span>
+                <span class="tag">March 4, 2026</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 2: Iran -->
+    <section class="slide">
+        <div class="footer">01 // Operation Epic Fury</div>
+        <div class="slide-content">
+            <h2 class="reveal">Hindi Pagtatanggol, <br><span class="accent">Kundi Kriminalidad.</span></h2>
+            <div class="quote-box reveal">
+                <p>"Isang kriminal na hakbang ng isang rogue state na walang pagrespeto sa batas internasyunal at buhay ng tao."</p>
+            </div>
+            <ul class="bullet-list reveal">
+                <li><strong>Pebrero 28:</strong> Inilunsad ng US ang "Operation Epic Fury"</li>
+                <li>Hindi bababa sa <strong>500 patay</strong> sa mga unang araw ng atake sa mga sentrong sibilyan.</li>
+                <li>Ang "rules-based international order" ay malaking pagkukunwari lamang.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Slide 3: Venezuela -->
+    <section class="slide">
+        <div class="footer">02 // Global Threat</div>
+        <div class="slide-content">
+            <h2 class="reveal">Ang Buong Daigdig <br><span class="accent">Bilang Bakuran.</span></h2>
+            <ul class="bullet-list reveal">
+                <li><strong>Enero:</strong> Lantarang paglapastangan sa soberanya ng Venezuela.</li>
+                <li>Pinasok ng militar ng US upang bihagin si Pangulong Nicolás Maduro (mahigit 100 patay).</li>
+                <li><strong>Ang Mensahe ng US:</strong> Ang lakas-militar ay nakahihigit sa anumang batas internasyunal.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Slide 4: PH Context -->
+    <section class="slide">
+        <div class="footer">03 // Philippine Context</div>
+        <div class="slide-content">
+            <h2 class="reveal">Nasaan ang <br><span class="accent">Rehimeng Marcos Jr?</span></h2>
+            <ul class="bullet-list reveal">
+                <li>Nakapanlulumo ang <strong>pananahimik at kawalan ng pagkondena</strong> ng administrasyon.</li>
+                <li>Nananatiling sunud-sunuran si Marcos sa kumpas ng Washington.</li>
+                <li>Nasa bingit ng kamatayan ang ating mga OFW, gaya ni Mary Ann Velasquez de Vera (unang biktima sa Israel).</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Slide 5: The Warning -->
+    <section class="slide">
+        <div class="footer">04 // Middle East Warning</div>
+        <div class="slide-content">
+            <h2 class="reveal">Ang Malupit na <br><span class="accent">Katotohanan.</span></h2>
+            <div class="quote-box reveal">
+                <p>"Sa mata ng imperyalismong US, ang mga bansang nagpapatuloy sa kanila ay mga expendable na 'lily-pad' lamang."</p>
+            </div>
+            <ul class="bullet-list reveal">
+                <li>Ang mga base militar ng US ay naging magnet ng drone at missile attacks.</li>
+                <li>Protektado lamang ng Patriot/THAAD ang mga <strong>kagamitan ng US</strong>, hindi ang mga sibilyan.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Slide 6: EDCA & Bases -->
+    <section class="slide">
+        <div class="footer">05 // MDT, VFA, & EDCA</div>
+        <div class="slide-content">
+            <h2 class="reveal">Pilipinas Bilang <br><span class="accent">Collateral Damage.</span></h2>
+            <ul class="bullet-list reveal">
+                <li>Ginagawa tayong "frontline state" sa "First Island Chain" laban sa China.</li>
+                <li>Panganib ng ganting salakay hindi lang sa EDCA sites, kundi pati sa buong bansa:</li>
+            </ul>
+            <div class="tag-container reveal">
+                <span class="tag">Laoag Airport</span>
+                <span class="tag">Subic Freeport</span>
+                <span class="tag">Cebu Airports</span>
+                <span class="tag">Davao Airports</span>
+                <span class="tag">Batanes Islands</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 7: Calls to Action -->
+    <section class="slide">
+        <div class="footer">06 // Panawagan</div>
+        <div class="slide-content">
+            <h2 class="reveal">Mga Panawagan ng <br><span class="accent">Mamamayan.</span></h2>
+            <div class="calls-to-action reveal-scale">
+                <div class="cta-card">1. Kondenahin ang iligal na giyera ng US sa Iran!</div>
+                <div class="cta-card">2. Agarang proteksyon at repatriasyon para sa lahat ng OFW!</div>
+                <div class="cta-card">3. Kagyat na pagpapaalis ng mga tropa at kagamitang militar ng US (Typhon, NMESIS)!</div>
+                <div class="cta-card">4. Ibasura ang EDCA, MDT, at lahat ng tagibang na kasunduang militar!</div>
+                <div class="cta-card">5. Ipatupad ang isang tunay na malayang polisiyang panlabas!</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Set up intersection observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    updateDots(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const slides = document.querySelectorAll('.slide');
+        const dotContainer = document.getElementById('navDots');
+
+        // Create dots and observe slides
+        slides.forEach((slide, index) => {
+            observer.observe(slide);
+            
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            dot.addEventListener('click', () => {
+                slide.scrollIntoView({ behavior: 'smooth' });
+            });
+            dotContainer.appendChild(dot);
+            
+            slide.dataset.index = index;
+        });
+
+        function updateDots(activeSlide) {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[activeSlide.dataset.index].classList.add('active');
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const currentSlide = document.querySelector('.slide.visible') || slides[0];
+            const currentIndex = parseInt(currentSlide.dataset.index);
+            
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                if (currentIndex < slides.length - 1) {
+                    slides[currentIndex + 1].scrollIntoView({ behavior: 'smooth' });
+                }
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                e.preventDefault();
+                if (currentIndex > 0) {
+                    slides[currentIndex - 1].scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
